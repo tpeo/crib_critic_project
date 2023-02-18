@@ -45,4 +45,4 @@ signInWithEmailAndPassword(auth, email, password)
     });
 };
 
-localStorage.setItem("userAccessToken", JSON.stringify(user.accessToken))
+localStorage.setItem("userAccessToken", user.accessToken)
