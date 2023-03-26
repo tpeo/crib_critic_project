@@ -1,18 +1,30 @@
 import React from 'react'
 import './LandingPage.css';
-import SearchBar from './SearchBar';
+import SearchBar from '../components/SearchBar';
 import LogoName from '../images/CribCritiqName.svg';
+import { ActionIcon } from '@mantine/core';
+import { IconUser } from '@tabler/icons-react';
 
 export default function SearchContainer() {
   return (
-    <div className="search-container">
-      <div style={{display: 'flex', justifyContent: 'center'}}>
-        <img src = {LogoName} alt= 'Crib Critiq Name' style = {{height: '75%', width: '75%'}}></img>
+    <div className="main-container">
+      <div className="logo">
+        <img src={LogoName} alt="Crib Critiq Name"></img>
       </div>
-      <div style = {{display: 'flex', justifyContent: 'center', marginTop: '3%'}}>
+      <div className="search-container">
         <SearchBar />
       </div>
-      <div></div>
+      <div className="user-icon">
+        <ActionIcon
+          size={40}
+          radius="xl"
+          variant="filled"
+          color="custom.0"
+          sx={{ marginLeft: "20%" }}
+        >
+          <IconUser />
+        </ActionIcon>
+      </div>
     </div>
   );
 }
