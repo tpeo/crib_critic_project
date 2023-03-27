@@ -7,7 +7,7 @@ function FilterButton(props) {
         variant="light"
         style={{
           borderRadius: "25px", 
-          width: "30%",
+          width: "20%",
           height: "42px",
           padding: "0",
           display: "flex",

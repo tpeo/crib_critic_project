@@ -90,5 +90,24 @@ body {
     font-weight: 700;
 }
 
+.requests {
+    display: flex;
+    flex-flow: row wrap;
+}
+
 .requests div {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.requests span {
+    font-size: 1.2rem;
+}
+
+/* Main apartment image */
+
+.image-container > img {
+    width: 100%;
+    height: 100%;
 }

@@ -1,11 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Rating, Group, ActionIcon } from "@mantine/core";
 import FilterButton from '../components/FilterButton';
+import Map from '../components/Map';
 import { IconUpload, IconHeart } from '@tabler/icons-react';
 
 function AptInfo(props) {
-    const filters = ["filter 1", "filter 2", "filter 3", "filter 4"];
+    const filters = [
+      "filter 1",
+      "filter 2",
+      "filter 3",
+      "filter 4",
+      "filter 5",
+      "filter 6",
+      "filter 7",
+      "filter 8"
+    ];
     const rating = 3.9;
+    const [bgColor, setBgColor] = useState('transparent');
+
+    const handleClick = () => {
+      if(bgColor === 'transparent') {
+        setBgColor('red');
+      }
+      else {
+        setBgColor('transparent');
+      }
+      
+    };
+
     return (
       <div className="apartment-container">
         {/* Apartment Name, Location, and Reviews */}
@@ -18,7 +40,7 @@ function AptInfo(props) {
                 <Group position="center">
                   <Rating value={rating} fractions={10} readOnly />
                 </Group>
-                <span> 3.9 / 5</span>
+                <span> {rating} / 5</span>
               </div>
               <p style={{ textAlign: "center" }}>45 reviews</p>
             </div>
@@ -36,21 +58,32 @@ function AptInfo(props) {
           </div>
           <div className="requests">
             <div>
-              <ActionIcon>
-                <IconHeart />
+              <ActionIcon onClick={handleClick}>
+                <IconHeart style={{ fill: bgColor }} />
               </ActionIcon>
-              Add to Criblist
+              <span>Add to Criblist</span>
             </div>
             <div>
               <ActionIcon>
                 <IconUpload />
               </ActionIcon>
-              Share
+              <span>Share</span>
             </div>
           </div>
         </div>
-        <div style={{ backgroundColor: "green" }}> Hello World </div>
-        <div style={{ backgroundColor: "purple" }}> Hello World </div>
+
+        {/* Apartment main image */}
+        <div className="image-container">
+          <img
+            alt="Apartment outward view"
+            src="https://lh3.googleusercontent.com/p/AF1QipPS-y7F3BG_AJngG6xsUF-Vyppg2lvaN98j2-9o=s1360-w1360-h1020"
+          ></img>
+        </div>
+
+        {/* Apartment on map */}
+        <div>
+          <Map lat = {30.2842} lng = {-97.7444}></Map>
+        </div>
       </div>
     );
 }
