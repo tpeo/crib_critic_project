@@ -1,4 +1,5 @@
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript} from "@react-google-maps/api";
+import Marker from './Marker.js';
 import "./components.css";
 
 export default function Map(props) {
@@ -14,11 +15,11 @@ function MadeMap(props) {
   const center = { lat: props.lat, lng: props.lng };
   return (
     <GoogleMap
-      zoom={18}
+      zoom={16}
       center={center}
       mapContainerClassName="map-container"
     >
-      <Marker position={center} />
+      <Marker lat={props.lat} lng={props.lng} apartment={"Lark Austin"} address={"123 Guadalupe St"}/>
     </GoogleMap>
   );
 }

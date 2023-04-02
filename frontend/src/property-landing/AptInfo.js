@@ -76,7 +76,7 @@ function AptInfo(props) {
         <div className="image-container">
           <img
             alt="Apartment outward view"
-            src="https://lh3.googleusercontent.com/p/AF1QipPS-y7F3BG_AJngG6xsUF-Vyppg2lvaN98j2-9o=s1360-w1360-h1020"
+            src="https://images1.apartments.com/i2/jIacUkz1_StGkJKfklU7aby3CZWzuy3iGQY78h5LYcs/111/villas-on-rio-austin-tx-srgb8485-hdr.jpg"
           ></img>
         </div>
 
