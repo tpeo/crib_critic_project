@@ -1,6 +1,8 @@
 import './App.css';
-import FrontPage from './front-page/FrontPage';
-import {MantineProvider} from '@mantine/core';
+import LandingPage from './pages/property-landing/LandingPage';
+import FrontPage from './pages/front-page/FrontPage';
+import { MantineProvider } from "@mantine/core";
+
 function App() {
   return (
     <MantineProvider
@@ -23,9 +25,7 @@ function App() {
         },
       }}
     >
-      <div className="App">
-        <FrontPage />
-      </div>
+      <FrontPage />
     </MantineProvider>
   );
 }

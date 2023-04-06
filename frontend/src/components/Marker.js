@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { MarkerF, InfoWindowF } from '@react-google-maps/api';
 
 function Marker(props) {
