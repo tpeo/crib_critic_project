@@ -40,3 +40,8 @@
     align-items: center;
     justify-content: center;
 }
+
+.sidebar-title {
+    font-weight: 700;
+    font-size: 1.3em;
+}
