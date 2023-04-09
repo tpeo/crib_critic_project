@@ -3,22 +3,25 @@ const cors = require("cors");
 const middleware = require("../middleware/middle_functions");
 const {db} = require("../firebase");
 const apartmentRouter = express.Router();
-require("dotenv").config();
 apartmentRouter.use(cors());
 apartmentRouter.use(express.json());
 
-apartmentRouter.get("/apartment_list", middleware.auth(req, res, next), async (req, res) => {
+apartmentRouter.get("/apartment_list", async (req, res) => {
     try {
-        const groups = await db.collection('groups').get();
+        const apartments = await db.collection('apartments').get();
+        const apartmentNames = [];
+        apartments.forEach((doc) => {
+            apartmentNames.push(doc.id);
+        })
+        res.status(200).json({apartmentNames: apartmentNames});
     }
     catch(error) {
         res.status(400).json(error);
     }
 });
 
-apartmentRouter.post("/amenities", middleware.auth(req, res, next), (req, res) => {
+apartmentRouter.post("/amenities", (req, res) => {
     try {
-
     }
     catch(error) {
 
