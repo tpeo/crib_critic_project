@@ -2,12 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const middleware = require("../middleware/middle_functions");
 const {db} = require("../firebase");
-const auth = express.Router();
+const apartmentRouter = express.Router();
 require("dotenv").config();
-auth.use(cors());
-auth.use(express.json());
+apartmentRouter.use(cors());
+apartmentRouter.use(express.json());
 
-auth.get("/apartment_list", middleware.auth(req, res, next), async (req, res) => {
+apartmentRouter.get("/apartment_list", middleware.auth(req, res, next), async (req, res) => {
     try {
         const groups = await db.collection('groups').get();
     }
@@ -16,7 +16,7 @@ auth.get("/apartment_list", middleware.auth(req, res, next), async (req, res) =>
     }
 });
 
-auth.post("/amenities", middleware.auth(req, res, next), (req, res) => {
+apartmentRouter.post("/amenities", middleware.auth(req, res, next), (req, res) => {
     try {
 
     }
@@ -25,4 +25,4 @@ auth.post("/amenities", middleware.auth(req, res, next), (req, res) => {
     }
 });
 
-module.exports = {auth};
+module.exports = {apartmentRouter};
