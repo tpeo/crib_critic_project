@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const middleware = require("../middleware/middle_functions");
 const {db} = require("../firebase");
-const { doc, getDoc } = require("firebase/firestore");
 
 
 const apartmentRouter = express.Router();
