@@ -4,6 +4,7 @@ import { Rating, Group, ActionIcon } from "@mantine/core";
 import FilterButton from '../../components/FilterButton';
 import Map from '../../components/Map';
 import { IconUpload, IconHeart } from '@tabler/icons-react';
+import axios from "axios";
 
 function AptInfo(props) {
     const filters = [
@@ -29,12 +30,19 @@ function AptInfo(props) {
     };
     const {name} = useParams()
     useEffect(() => {
-      //Address
-      //Rating
-      //Number of Reviews
-      //Image
-
-    }, [])
+      fetch("https://crib-critic-project-git-backend-crib-critiq.vercel.app/apartments/apartment_features", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({name: name}),
+  }).then(response => {
+    console.log(response);
+  }).catch(error => {
+    console.log(error);
+  })
+    });
 
 
 

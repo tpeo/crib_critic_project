@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './App.css';
 import LandingPage from './pages/property-landing/LandingPage';
 import FrontPage from './pages/front-page/FrontPage';
 import { MantineProvider } from "@mantine/core";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import './index.css';
 import reportWebVitals from './reportWebVitals';
+import axios from "axios";
+
+axios.defaults.baseURL = "https://crib-critic-project-git-backend-crib-critiq.vercel.app";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
