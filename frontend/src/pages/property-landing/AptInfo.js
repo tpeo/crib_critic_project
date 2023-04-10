@@ -4,7 +4,6 @@ import { Rating, Group, ActionIcon } from "@mantine/core";
 import FilterButton from '../../components/FilterButton';
 import Map from '../../components/Map';
 import { IconUpload, IconHeart } from '@tabler/icons-react';
-import axios from "axios";
 
 function AptInfo(props) {
     const filters = [
