@@ -22,15 +22,16 @@ apartmentRouter.get("/apartment_list", async (req, res) => {
     }
 });
 
-apartmentRouter.get("/apartment_features", async (req, res) => {
+apartmentRouter.get("/apartment_features/:name", async (req, res) => {
     try {
-        const apartmentsRef = db.collection('apartments');
-        const document = await apartmentsRef.doc(req.body.name).get();
-        res.status(200).json(document.data());
+      const apartmentsRef = db.collection('apartments');
+      const document = await apartmentsRef.doc(req.params.name).get();
+      res.status(200).json(document.data());
     }
     catch(error) {
-        res.status(400).json(error);
+      res.status(400).json(error);
     }
-});
+  });
+  
 
 module.exports = {apartmentRouter};
