@@ -1,62 +1,76 @@
 import React from 'react';
-import { Navbar, createStyles, Slider, rem } from "@mantine/core";
+import { Navbar, createStyles, Accordion, Group, ActionIcon } from "@mantine/core";
+import SidebarSlider from './SidebarSlider';
+import { IconCaretRight } from '@tabler/icons-react';
 import "./components.css";
 
 const useStyles = createStyles((theme) => ({
-    navbar: {
-        backgroundColor: theme.colors.gray[1],
-        borderColor: "#CED4DA",
-        borderTopRightRadius: "10px",
-        borderBottomRightRadius: "10px",
-        minWidth:"200px"
-      },
+  navbar: {
+    backgroundColor: theme.colors.gray[1],
+    borderColor: "#CED4DA",
+    borderTopRightRadius: "10px",
+    borderBottomRightRadius: "10px",
+    minWidth: "200px",
+  },
+  group: {
+    marginTop: "50px",
+  },
+  accordion: {
+    width: "100%",
+    alignSelf: "#region"
+  }
 }));
 
-const marks = [
-  { value: 20, label: '20%' },
-  { value: 50, label: '50%' },
-  { value: 80, label: '80%' },
-];
 
 
 function Sidebar(props) {
     const { classes } = useStyles();
+    const accordionValues = ["Bed/Bath", "Amenities", "Services", "Financials"];
     return (
       <Navbar width={{ sm: 300 }} p="md" className={classes.navbar}>
-        <p className="sidebar-title">Filters</p>
-        <Slider
-          defaultValue={40}
-          marks={marks}
-          labelTransition="fade"
-          size={2}
-          styles={(theme) => ({
-            track: {
-              backgroundColor: 'green',
-            },
-            mark: {
-              width: rem(20),
-              height: rem(20),
-              borderRadius: rem(20),
-              transform: `translateX(-${rem(3)}) translateY(-${rem(2)})`,
-              borderColor: theme.colors.custom[1]
-            },
-            markFilled: {
-              backgroundColor: theme.colors.custom[1],
-            },
-            markLabel: {
-              fontSize: theme.fontSizes.xs,
-              marginBottom: rem(5),
-              marginTop: 0,
-            },
-            thumb: {
-              height: rem(16),
-              width: rem(16),
-              backgroundColor: theme.colors.custom[0],
-              borderWidth: rem(1),
-              boxShadow: theme.shadows.sm,
-            },
-          })}
-        />
+        <p className="sidebar-title" style={{ fontWeight: "700" }}>
+          Filters
+        </p>
+        <p className="sidebar-subtitle"> Price</p>
+        <SidebarSlider />
+        <p className="sidebar-subtitle" style={{ marginTop: "20%" }}>
+          Proximity
+        </p>
+        <SidebarSlider />
+        <Group className={classes.group}>
+          <Accordion
+            color="#F1F3F5"
+            chevronPosition="right"
+            chevron={
+              <ActionIcon color="orange.6" variant="subtle">
+                <IconCaretRight size="1.125rem" fill = "#FD7E14"/>
+              </ActionIcon>
+            }
+            className={classes.accordion}
+            styles={(theme) => ({
+              item: {
+                // styles added to all items
+                backgroundColor: theme.colors.gray[1],
+                border: `none`,
+              },
+              chevron: {
+                // styles added to chevron when it should rotate
+                "&[data-rotate]": {
+                  transform: "rotate(90deg)",
+                },
+              },
+            })}
+          >
+            {accordionValues && accordionValues.map(e => {
+              return (
+                <Accordion.Item key={e} value={e}>
+                  <Accordion.Control>{e}</Accordion.Control>
+                  <Accordion.Panel>Test</Accordion.Panel>
+                </Accordion.Item>
+              );
+            })}
+          </Accordion>
+        </Group>
       </Navbar>
     );
 }

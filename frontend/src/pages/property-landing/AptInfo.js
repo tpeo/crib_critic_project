@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 import { Rating, Group, ActionIcon } from "@mantine/core";
 import FilterButton from '../../components/FilterButton';
 import Map from '../../components/Map';
@@ -25,14 +26,23 @@ function AptInfo(props) {
       else {
         setBgColor('transparent');
       }
-      
     };
+    const {name} = useParams()
+    useEffect(() => {
+      //Address
+      //Rating
+      //Number of Reviews
+      //Image
+
+    }, [])
+
+
 
     return (
       <div className="apartment-container">
         {/* Apartment Name, Location, and Reviews */}
         <div className="location-review">
-          <p> Villas on Rio</p>
+          <p>{name}</p>
           <div className="address-reviews">
             <p> 2111 Rio Grande St, Austin, TX 78705</p>
             <div style={{ width: "30%" }}>
