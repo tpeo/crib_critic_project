@@ -4,8 +4,10 @@ import SearchBar from './SearchBar';
 import LogoName from '../images/CribCritiqName.svg';
 import { ActionIcon } from '@mantine/core';
 import { IconUser } from '@tabler/icons-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function SearchContainer() {
+  const navigate = useNavigate();
   return (
     <div className="main-container">
       <div className="logo">
@@ -21,6 +23,7 @@ export default function SearchContainer() {
           variant="outline"
           color="custom.0"
           sx={{ marginLeft: "20%" }}
+          onClick= {() => navigate(`/user_home`)}
         >
           <IconUser />
         </ActionIcon>
