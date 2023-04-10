@@ -7,7 +7,6 @@ import { IconUpload, IconHeart } from '@tabler/icons-react';
 
 function AptInfo(props) {
     const [apartmentValues, setApartmentValues] = useState(null);
-    const rating = 3.9;
     const [bgColor, setBgColor] = useState('transparent');
 
     const handleClick = () => {
@@ -17,6 +16,7 @@ function AptInfo(props) {
       else {
         setBgColor('transparent');
       }
+      
     };
     const {name} = useParams();
     useEffect(() => {
