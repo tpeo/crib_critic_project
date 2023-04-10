@@ -79,10 +79,17 @@ body {
 
 .image-container {
     overflow: hidden;
+    position: relative;
 }
 
 .image-container > img {
-    object-fit: contain;
+    position: absolute; /* Required for centering */
+    top: 50%; /* Center the image vertically */
+    left: 50%; /* Center the image horizontally */
+    transform: translate(-50%, -50%); /* Required for centering */
+    width: 100%; /* Required for scaling */
+    height: 100%; /* Required for scaling */
+    object-fit: cover; /* Fit the image within the container */
 }
 
 .map-container {
