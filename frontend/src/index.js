@@ -6,6 +6,7 @@ import { MantineProvider } from "@mantine/core";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import UserPage from './pages/user-page/UserPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -34,6 +35,7 @@ root.render(
         <Routes>
           <Route path="/" element={<FrontPage />} />
           <Route path="/property_landing/:name" element={<LandingPage />} />
+          <Route path="/user_home" element={<UserPage/>} />
         </Routes>
       </Router>
     </MantineProvider>

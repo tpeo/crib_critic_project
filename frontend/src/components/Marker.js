@@ -11,6 +11,7 @@ function Marker(props) {
   const handleMouseOut = () => {
     setOpen(false);
   };
+  console.log(props.lat, props.lng)
 
   return (
     <>
@@ -28,10 +29,6 @@ function Marker(props) {
             <div>
               <div className = "marker-container">
                 <h3>{props.apartment}</h3>
-                <img
-                  alt="Logo"
-                  src="https://www.larknetwork.scion-sites.com/larkaustin/wp-content/uploads/sites/14/2019/05/lark_standard_icon_rgb.jpg"
-                />
               </div>
               <p>{props.address}</p>
             </div>

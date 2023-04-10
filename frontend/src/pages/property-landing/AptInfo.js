@@ -13,7 +13,7 @@ function AptInfo(props) {
       if(bgColor === 'transparent') {
         setBgColor('red');
         fetch('https://crib-critic-project-git-backend-crib-critiq.vercel.app/users/add_to_favorites', {
-          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          method: "POST", 
           headers: {
             "Content-Type": "application/json",
           },
@@ -104,7 +104,7 @@ function AptInfo(props) {
             <div className="filter-container">
               <div className="filters">
                 Filters
-                <div style={{ display: "flex", flexWrap: "wrap" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: 'flex-start' }}>
                   {apartmentValues.filters &&
                     apartmentValues.filters.map((e) => (
                       <FilterButton key={e} filter={e} />
@@ -137,7 +137,7 @@ function AptInfo(props) {
 
             {/* Apartment on map */}
             <div className="map-container">
-              <Map lat={30.2842} lng={-97.7444} />
+              <Map lat={apartmentValues.lat} lng={apartmentValues.lng} apartment = {apartmentValues.name} address = {apartmentValues.address}/>
             </div>
           </div>
         )}

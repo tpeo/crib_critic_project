@@ -4,7 +4,9 @@ import {Link} from 'react-router-dom';
 const useStyles = createStyles((theme) => ({
   card: {
     position: 'relative',
-    height: rem(280),
+    width: rem(200),
+    height: rem(200),
+
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
 
     [`&:hover .${getStylesRef('image')}`]: {

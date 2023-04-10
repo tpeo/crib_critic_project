@@ -19,7 +19,7 @@ function MadeMap(props) {
       center={center}
       mapContainerClassName="map-container"
     >
-      <Marker lat={props.lat} lng={props.lng} apartment={"Lark Austin"} address={"123 Guadalupe St"}/>
+      <Marker lat={props.lat} lng={props.lng} apartment={props.apartment} address={props.address}/>
     </GoogleMap>
   );
 }
