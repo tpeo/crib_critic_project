@@ -8,17 +8,32 @@ import { IconUpload, IconHeart } from '@tabler/icons-react';
 function AptInfo(props) {
     const [apartmentValues, setApartmentValues] = useState(null);
     const [bgColor, setBgColor] = useState('transparent');
-
+    const {name} = useParams();
     const handleClick = () => {
       if(bgColor === 'transparent') {
         setBgColor('red');
+        fetch('https://crib-critic-project-git-backend-crib-critiq.vercel.app/add_to_favorites', {
+          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          mode: "no-cors", // no-cors, *cors, same-origin
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({user: "test", apartment: name}), // body data type must match "Content-Type" header
+        });
       }
       else {
         setBgColor('transparent');
+        fetch('https://crib-critic-project-git-backend-crib-critiq.vercel.app/add_to_favorites', {
+          method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({username: "test", apartment: name}), // body data type must match "Content-Type" header
+        });
       }
       
     };
-    const {name} = useParams();
+    
     useEffect(() => {
       fetch(
         `https://crib-critic-project-git-backend-crib-critiq.vercel.app/apartments/apartment_features/${name}`,
@@ -43,8 +58,6 @@ function AptInfo(props) {
           console.log(error);
         });
     }, [name]);
-
-    console.log(apartmentValues);
 
     return (
       <>
