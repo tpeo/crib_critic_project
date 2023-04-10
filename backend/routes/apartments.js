@@ -2,6 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const middleware = require("../middleware/middle_functions");
 const {db} = require("../firebase");
+const { doc, getDoc } = require("firebase/firestore");
+
+
 const apartmentRouter = express.Router();
 apartmentRouter.use(cors());
 apartmentRouter.use(express.json());
@@ -20,11 +23,14 @@ apartmentRouter.get("/apartment_list", async (req, res) => {
     }
 });
 
-apartmentRouter.post("/amenities", (req, res) => {
+apartmentRouter.get("/apartment_features", async (req, res) => {
     try {
+        const apartmentsRef = db.collection('apartments');
+        const document = await apartmentsRef.doc(req.body.name).get();
+        res.status(200).json(document.data());
     }
     catch(error) {
-
+        res.status(400).json(error);
     }
 });
 
