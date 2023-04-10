@@ -12,9 +12,8 @@ function AptInfo(props) {
     const handleClick = () => {
       if(bgColor === 'transparent') {
         setBgColor('red');
-        fetch('https://crib-critic-project-git-backend-crib-critiq.vercel.app/add_to_favorites', {
+        fetch('https://crib-critic-project-git-backend-crib-critiq.vercel.app/users/add_to_favorites', {
           method: "POST", // *GET, POST, PUT, DELETE, etc.
-          mode: "no-cors", // no-cors, *cors, same-origin
           headers: {
             "Content-Type": "application/json",
           },
@@ -23,7 +22,7 @@ function AptInfo(props) {
       }
       else {
         setBgColor('transparent');
-        fetch('https://crib-critic-project-git-backend-crib-critiq.vercel.app/add_to_favorites', {
+        fetch('https://crib-critic-project-git-backend-crib-critiq.vercel.app/users/favorites/', {
           method: "DELETE", // *GET, POST, PUT, DELETE, etc.
           headers: {
             "Content-Type": "application/json",
@@ -35,6 +34,21 @@ function AptInfo(props) {
     };
     
     useEffect(() => {
+      //Sets the criblist button
+      fetch(
+        "https://crib-critic-project-git-backend-crib-critiq.vercel.app/users/favorites/test",
+        {
+          method: "GET",
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const favoriteList = data.favorites;
+          if (favoriteList.indexOf(name) !== -1) {
+            setBgColor("red");
+          }
+        });      
+
       fetch(
         `https://crib-critic-project-git-backend-crib-critiq.vercel.app/apartments/apartment_features/${name}`,
         {
