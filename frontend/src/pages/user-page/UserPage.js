@@ -6,7 +6,7 @@ function UserPage(props) {
         <div>
            <SearchContainer/>
            <div>
-            <h1>Favorited Apartments</h1>
+            <h1>Favorited Apartments for Test</h1>
             
            </div>
         </div>
