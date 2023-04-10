@@ -35,18 +35,39 @@ userRouter.get('/favorites/:username', async (req, res) => {
 
 userRouter.delete('/favorites/', async (req, res) => {
     try {
-        console.log(req.body)
         const usersRef = db.collection('users');
         const documentRef = usersRef.doc(req.body.username);
         const document = await documentRef.get();
         const existingArray = document.get('favorites');
         const updatedArray = existingArray.filter(item => item !== req.body.apartment);
         await documentRef.update({ favorites: updatedArray });
-        console.log(2);
         res.status(200).json("Completed");
     }
     catch(error) {
         res.status(400).json(error);
+    }
+})
+
+userRouter.get('/favorites_card_list/:username', async (req, res) => {
+    try {
+        const usersRef = db.collection('users');
+        const apartmentsRef = db.collection('apartments');
+        const document = await usersRef.doc(req.params.username).get();
+        const favorites = document.data().favorites;
+        const returnValues = [];
+
+        for (const e of favorites) {
+        const apartDoc = await apartmentsRef.doc(e).get();
+        returnValues.push({
+            name: e,
+            address: apartDoc.data().address,
+            image: apartDoc.data().picture,
+        });
+        }
+        res.status(200).json({card_values: returnValues});
+    }
+    catch(error) {
+        res.status(400).json("Didn't work");
     }
 })
 
